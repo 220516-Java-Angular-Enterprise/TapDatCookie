@@ -14,7 +14,19 @@ public class level1DAO implements CrudeDAO<Level1> {
 
     @Override
     public void save(Level1 obj) {
-
+        try {
+            PreparedStatement ps = con.prepareStatement("INSERT INTO level1 (id, user_id, score, time, date) VALUES (?, ?, ?, ?, ?)");
+            ps.setString(1, obj.getId());
+            ps.setString(2, obj.getUserId());
+            ps.setInt(3, obj.getScore());
+            ps.setDouble(4, obj.getTime());
+            ps.setString(5, obj.getDate());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
     }
 
     @Override

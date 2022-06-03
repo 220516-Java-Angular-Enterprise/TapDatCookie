@@ -1,6 +1,5 @@
 package com.revature.cookieTap.daos;
 
-import com.revature.cookieTap.models.Level1;
 import com.revature.cookieTap.models.Level2;
 import com.revature.cookieTap.utils.DatabaseConnection;
 

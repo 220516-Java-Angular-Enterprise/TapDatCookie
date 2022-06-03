@@ -1,6 +1,5 @@
 package com.revature.cookieTap.services;
 
-import com.revature.cookieTap.models.Level1;
 import com.revature.cookieTap.models.Level2;
 
 import java.util.List;

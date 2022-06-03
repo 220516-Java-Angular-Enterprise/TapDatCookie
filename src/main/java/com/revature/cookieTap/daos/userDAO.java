@@ -106,7 +106,7 @@ public class userDAO implements CrudeDAO<User>{
         List<String> usernames = new ArrayList();
 
         try {
-            PreparedStatement ps = con.prepareStatement("SELECT username FROM notusers");
+            PreparedStatement ps = con.prepareStatement("SELECT username FROM users");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 usernames.add(rs.getString("username"));

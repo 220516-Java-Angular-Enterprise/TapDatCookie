@@ -20,4 +20,8 @@ public class Level1Service {
         List<Level1> ones = level1DAO.getAllByUserID(id);
         return ones;
     }
+
+    public void register(Level1 one){
+        level1DAO.save(one);
+    }
 }
