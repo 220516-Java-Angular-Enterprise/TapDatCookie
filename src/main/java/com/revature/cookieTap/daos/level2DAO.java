@@ -15,7 +15,19 @@ public class level2DAO implements CrudeDAO<Level2>{
 
     @Override
     public void save(Level2 obj) {
-
+        try {
+            PreparedStatement ps = con.prepareStatement("INSERT INTO level2 (id, user_id, score, time, date) VALUES (?, ?, ?, ?, ?)");
+            ps.setString(1, obj.getId());
+            ps.setString(2, obj.getUserId());
+            ps.setInt(3, obj.getScore());
+            ps.setDouble(4, obj.getTime());
+            ps.setString(5, obj.getDate());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
     }
 
     @Override
@@ -42,7 +54,7 @@ public class level2DAO implements CrudeDAO<Level2>{
             while(rs.next()){
                 Level2 two = new Level2(
                         rs.getString("id"),
-                        rs.getString("userId"),
+                        rs.getString("user_id"),
                         rs.getInt("score"),
                         rs.getDouble("time"),
                         rs.getString("date")
@@ -65,7 +77,7 @@ public class level2DAO implements CrudeDAO<Level2>{
             while(rs.next()){
                 Level2 one = new Level2(
                         rs.getString("id"),
-                        rs.getString("userId"),
+                        rs.getString("user_id"),
                         rs.getInt("score"),
                         rs.getDouble("time"),
                         rs.getString("date")

@@ -53,7 +53,7 @@ public class level1DAO implements CrudeDAO<Level1> {
             while(rs.next()){
                 Level1 one = new Level1(
                         rs.getString("id"),
-                        rs.getString("userId"),
+                        rs.getString("user_id"),
                         rs.getInt("score"),
                         rs.getDouble("time"),
                         rs.getString("date")
@@ -75,7 +75,7 @@ public class level1DAO implements CrudeDAO<Level1> {
             while(rs.next()){
                 Level1 one = new Level1(
                         rs.getString("id"),
-                        rs.getString("userId"),
+                        rs.getString("user_id"),
                         rs.getInt("score"),
                         rs.getDouble("time"),
                         rs.getString("date")

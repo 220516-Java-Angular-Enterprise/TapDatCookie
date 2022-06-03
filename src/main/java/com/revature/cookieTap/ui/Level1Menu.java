@@ -59,6 +59,26 @@ public class Level1Menu implements MenuTemplate{
         System.out.println(font.purpleBold(Welcome));
         System.out.println(font.greenBold("\n                                           PRESS ENTER FOR NEXT"));
         scan.nextLine();
+        System.out.println(font.cyanBold("\n                                           ROUND 1 STARTS IN..."));
+        //creates delay
+        System.out.println("                                                    3...");
+        try{
+            TimeUnit.MILLISECONDS.sleep(2000);
+        }catch (InterruptedException e){
+            System.out.println("Thread was interrupted.");
+        }
+        System.out.println("                                                    2...");
+        try{
+            TimeUnit.MILLISECONDS.sleep(2000);
+        }catch (InterruptedException e){
+            System.out.println("Thread was interrupted.");
+        }
+        System.out.println("                                                    1...");
+        try{
+            TimeUnit.MILLISECONDS.sleep(1000);
+        }catch (InterruptedException e){
+            System.out.println("Thread was interrupted.");
+        }
         System.out.println(font.cyanBold(level1));
         levelOne(user);
     }
@@ -98,8 +118,10 @@ public class Level1Menu implements MenuTemplate{
         if (timeElasped <= 2) score = 900;
         if(timeElasped <= 1) score = 1000;
 
-        System.out.println("Time took:"+ timeElasped+"s!");
-        System.out.println("Points Earned: "+score);
+        System.out.println(font.purpleBold("+-------------------- YOU FINISHED! --------------------+"));
+        System.out.println(font.whiteBold("Time took: ")+ font.purpleBold(timeElasped+"s!"));
+        System.out.println(font.whiteBold("Points Earned: ")+font.purpleBold(score+""));
+        System.out.println(font.purpleBold("+--------------------------------------------------------+"));
         String date = LocalDateTime.now().toString();
 
         Level1 oneSave = new Level1(UUID.randomUUID().toString(), user.getId(), score, timeElasped, date);

@@ -85,7 +85,7 @@ public class Level2Menu implements MenuTemplate{
     }
 
     public void levelTwo(User user){
-        System.out.println("INSTRUCTION: TAP ENTER KEY UNTIL YOU REACH 200");
+        System.out.println("INSTRUCTION: TAP ENTER KEY UNTIL YOU REACH 300");
         int goal = 300;
         int count = 0;
         int fiftyPoints = 0;
@@ -113,8 +113,10 @@ public class Level2Menu implements MenuTemplate{
         if (timeElasped <= 2) score = 900;
         if(timeElasped <= 1) score = 1000;
 
-        System.out.println("Time took:"+ timeElasped+"s!");
-        System.out.println("Points Earned: "+score);
+        System.out.println(font.purpleBold("+-------------------- YOU FINISHED! --------------------+"));
+        System.out.println(font.whiteBold("Time took: ")+ font.purpleBold(timeElasped+"s!"));
+        System.out.println(font.whiteBold("Points Earned: ")+font.purpleBold(score+""));
+        System.out.println(font.purpleBold("+--------------------------------------------------------+"));
         String date = LocalDateTime.now().toString();
 
         Level2 twoSave = new Level2(UUID.randomUUID().toString(), user.getId(), score, timeElasped, date);
