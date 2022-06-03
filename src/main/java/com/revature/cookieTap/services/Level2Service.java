@@ -22,4 +22,7 @@ private final com.revature.cookieTap.daos.level2DAO level2DAO;
     }
 
 
+    public void register(Level2 two) {
+        level2DAO.save(two);
+    }
 }

@@ -10,12 +10,14 @@ import java.time.LocalDateTime;
 import java.util.Scanner;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
 
 public class Level1Menu implements MenuTemplate{
     FontService font = new FontService();
     private final User user;
 
     Level1Service level1Service = new Level1Service(new level1DAO());
+
     Scanner scan = new Scanner(System.in);
     public Level1Menu(User user) {
         this.user = user;
@@ -82,6 +84,13 @@ public class Level1Menu implements MenuTemplate{
         double timeElasped = (finishTime - startTime)/1000.0;
         System.out.println(font.yellowBold("GOAL REACHED!"));
         System.out.println(font.yellowBold(cookie));
+
+        try{
+            TimeUnit.MILLISECONDS.sleep(2000);
+        }catch (InterruptedException e){
+            System.out.println("Thread was interrupted.");
+        }
+
         if (timeElasped <= 10) score = 100;
         if(timeElasped <= 7) score = 300;
         if (timeElasped <= 5) score = 500;
@@ -95,6 +104,9 @@ public class Level1Menu implements MenuTemplate{
 
         Level1 oneSave = new Level1(UUID.randomUUID().toString(), user.getId(), score, timeElasped, date);
         level1Service.register(oneSave);
+
+        Level2Menu level2Menu = new Level2Menu(user);
+        level2Menu.start();
     }
 
     public int RngScore(){
